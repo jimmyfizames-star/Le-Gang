@@ -191,7 +191,8 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  
 <script>
 
 // =========================
@@ -288,8 +289,12 @@ db.ref("messages")
 
     div.querySelector(".pseudo").textContent = msg.pseudo;
 
-    div.querySelector(".texte").textContent = msg.text;
+    const propre = DOMPurify.sanitize(msg.text, {
+      ALLOWED_TAGS: ["b","i","u","br","img","a"],
+      ALLOWED_ATTR: ["href","src","alt","target"]
+    });
 
+div.querySelector(".texte").innerHTML = propre;
     messages.appendChild(div);
 
     messages.scrollTop = messages.scrollHeight;
