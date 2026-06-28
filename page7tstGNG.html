@@ -156,8 +156,8 @@
 </div>
 
 <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 
 <script>
@@ -183,10 +183,11 @@ const db = firebase.database();
 // ---------------------------
 let pseudo = localStorage.getItem("pseudo");
 
-if (!pseudo) {
-    pseudo = prompt("Entre ton nom :");
-    localStorage.setItem("pseudo", pseudo);
+while (!pseudo) {
+    pseudo = prompt("Entre ton pseudo :");
 }
+
+localStorage.setItem("pseudo", pseudo);
 
 // ---------------------------
 // AFFICHAGE DES MESSAGES
