@@ -92,147 +92,259 @@
       <li><a class="linkN" href="#sandbox">SandBox Explosif</a></li>
     </ul>
   </nav>
+<div class="pages" id="forum">
 
-  <div class="pages" id="forum">
     <a class="linkN" href="#somm">☝</a>
-    <p>
-      Forum !!!
-    </p>
 
+    <p><b>Forum</b></p>
 
+    <style>
 
+    #forumContainer{
+        display:flex;
+        flex-direction:column;
+        height:500px;
+        border:1px solid #ccc;
+        border-radius:10px;
+        overflow:hidden;
+    }
 
+    #messages{
+        flex:1;
+        overflow-y:auto;
+        background:#f5f5f5;
+        padding:10px;
+    }
 
-    
-<style>
+    .msg{
+        background:white;
+        border-radius:10px;
+        padding:10px;
+        margin-bottom:10px;
+        box-shadow:0 1px 3px rgba(0,0,0,.15);
+        overflow-wrap:break-word;
+    }
 
-  /* Zone des messages */
-#messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-    background: #f2f2f2;
-}
+    .pseudo{
+        font-weight:bold;
+        color:#1976d2;
+    }
 
-/* Style d'un message */
-.msg {
-    background: white;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    max-width: 80%;
-}
+    .date{
+        font-size:11px;
+        color:gray;
+        margin-top:4px;
+    }
 
-/* Zone de saisie */
-#inputZone {
-    display: flex;
-    padding: 10px;
-    background: #ddd;
-}
+    #inputZone{
+        display:flex;
+        gap:10px;
+        padding:10px;
+        background:#e5e5e5;
+    }
 
-#text {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-}
+    #text{
+        flex:1;
+        min-width:0;
+        padding:10px;
+        border:none;
+        border-radius:8px;
+        font-size:15px;
+    }
 
-#sendBtn {
-    margin-left: 10px;
-    padding: 10px 15px;
-    border: none;
-    background: #4CAF50;
-    color: white;
-    border-radius: 8px;
-}
-  
-</style>
-    
-<div id="messages"></div>
+    #sendBtn{
+        padding:10px 18px;
+        border:none;
+        border-radius:8px;
+        background:#4CAF50;
+        color:white;
+        cursor:pointer;
+    }
 
-<div id="inputZone">
-    <input id="text" placeholder="Message...">
-    <button id="sendBtn">Envoyer</button>
-</div>
+    #sendBtn:hover{
+        background:#43a047;
+    }
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    </style>
 
+    <div id="forumContainer">
+
+        <div id="messages"></div>
+
+        <div id="inputZone">
+
+            <input
+                id="text"
+                type="text"
+                maxlength="300"
+                placeholder="Votre message...">
+
+            <button id="sendBtn">
+                Envoyer
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Firebase V8 -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 <script>
-// ---------------------------
+
+// =========================
 // CONFIG FIREBASE
-// ---------------------------
+// =========================
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDsW2AhlyDKRFQ9AuamUvAijZy1pBb5bWw",
-  authDomain: "gang-b3380.firebaseapp.com",
-  databaseURL: "https://gang-b3380-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "gang-b3380",
-  storageBucket: "gang-b3380.firebasestorage.app",
-  messagingSenderId: "717171676998",
-  appId: "1:717171676998:web:9c6f45b92c066680d43747",
-  measurementId: "G-ZPFZPBDV6V"
+
+    apiKey: "AIzaSyDsW2AhlyDKRFQ9AuamUvAijZy1pBb5bWw",
+
+    authDomain: "gang-b3380.firebaseapp.com",
+
+    databaseURL: "https://gang-b3380-default-rtdb.europe-west1.firebasedatabase.app",
+
+    projectId: "gang-b3380",
+
+    storageBucket: "gang-b3380.appspot.com",
+
+    messagingSenderId: "717171676998",
+
+    appId: "1:717171676998:web:9c6f45b92c066680d43747"
+
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const db = firebase.database();
 
-// ---------------------------
-// POP-UP POUR LE NOM
-// ---------------------------
+
+
+// =========================
+// PSEUDO
+// =========================
+
 let pseudo = localStorage.getItem("pseudo");
 
-while (!pseudo) {
-    pseudo = prompt("Entre ton pseudo :");
+while(!pseudo){
+
+    pseudo = prompt("Choisissez un pseudo :");
+
+    if(pseudo){
+        pseudo = pseudo.trim();
+    }
+
 }
 
-localStorage.setItem("pseudo", pseudo);
+localStorage.setItem("pseudo",pseudo);
 
-// ---------------------------
+
+
+// =========================
+// ELEMENTS HTML
+// =========================
+
+const messages = document.getElementById("messages");
+
+const input = document.getElementById("text");
+
+const bouton = document.getElementById("sendBtn");
+
+
+
+// =========================
 // AFFICHAGE DES MESSAGES
-// ---------------------------
-const messagesDiv = document.getElementById("messages");
+// =========================
 
-db.ref("messages").on("value", snapshot => {
-    messagesDiv.innerHTML = "";
-    snapshot.forEach(child => {
-        let m = child.val();
-        messagesDiv.innerHTML += `
-            <div class="msg"><b>${m.pseudo}</b><br>${m.text}</div>
-        `;
-    });
+db.ref("messages")
 
-    // Scroll automatique en bas
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+.limitToLast(100)
+
+.on("child_added",snapshot=>{
+
+    const msg = snapshot.val();
+
+    const div = document.createElement("div");
+
+    div.className="msg";
+
+    const heure = new Date(msg.date || Date.now());
+
+    div.innerHTML=`
+
+        <div class="pseudo"></div>
+
+        <div class="texte"></div>
+
+        <div class="date">
+
+            ${heure.toLocaleString()}
+
+        </div>
+
+    `;
+
+    div.querySelector(".pseudo").textContent = msg.pseudo;
+
+    div.querySelector(".texte").textContent = msg.text;
+
+    messages.appendChild(div);
+
+    messages.scrollTop = messages.scrollHeight;
+
 });
 
-// ---------------------------
-// ENVOI D'UN MESSAGE
-// ---------------------------
-document.getElementById("sendBtn").onclick = () => {
-    let text = document.getElementById("text").value;
-    if (!text.trim()) return;
+
+
+// =========================
+// ENVOI
+// =========================
+
+function envoyer(){
+
+    let texte = input.value.trim();
+
+    if(texte==="") return;
 
     db.ref("messages").push({
-        pseudo: pseudo,
-        text: text
+
+        pseudo:pseudo,
+
+        text:texte,
+
+        date:Date.now()
+
     });
 
-    document.getElementById("text").value = "";
-};
+    input.value="";
+
+    input.focus();
+
+}
+
+bouton.onclick = envoyer;
+
+
+
+// =========================
+// TOUCHE ENTREE
+// =========================
+
+input.addEventListener("keydown",e=>{
+
+    if(e.key==="Enter"){
+
+        envoyer();
+
+    }
+
+});
+
 </script>
 
-
-
-
-
-    
-
-    
-
-  </div>
-
+</div>
   <div class="pages" id="games">
     <a class="linkN" href="#somm">☝</a>
     <p>
