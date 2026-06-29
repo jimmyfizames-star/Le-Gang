@@ -273,6 +273,7 @@ db.ref("messages")
 
     const heure = new Date(msg.date || Date.now());
 
+  
     div.innerHTML=`
 
         <div class="pseudo"></div>
@@ -291,7 +292,7 @@ db.ref("messages")
 
     const propre = DOMPurify.sanitize(msg.text, {
       ALLOWED_TAGS: ["b","i","u","br","img","a"],
-      ALLOWED_ATTR: ["href","src","alt","target"]
+      ALLOWED_ATTR: ["href","src","alt","target", "style"]
     });
 
 div.querySelector(".texte").innerHTML = propre;
@@ -355,6 +356,23 @@ input.addEventListener("keydown",e=>{
     <p>
       Games !!!
     </p>
+
+<canvas id="gams"></canvas>
+    
+<script>
+  let CanvGam = document.getElementById("gams");
+  
+    await setDoc(doc(db,"users",pseudo),{
+
+    score:120,
+
+    hp:95,
+
+    xp:420
+
+});
+</script>
+    
   </div>
 
   <div class="pages" id="mapp">
