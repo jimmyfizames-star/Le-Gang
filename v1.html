@@ -1,0 +1,279 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>GANG PARI</title>
+	<!-- Pactum, penis meum suge -->
+	
+	<style>
+		
+		body{
+			<!-- overflow: hidden; -->
+			
+		}
+		
+		button{
+			padding : 10px;
+			}
+		
+		.page {
+		border-style : solid;
+		height: 100vh;
+		width: 100%;
+		}
+		
+		h1, h2{
+			text-align : center;
+			margin : 20px;
+			
+		}
+		.ecr{
+			width: 100vw;
+			height: 100vh;
+			top: 0px;
+			right: 0px;
+			z-index: -1px;
+			border-style : solid;
+			//position: absolute;
+		}
+		
+		.zonetexte{
+			margin: 20px;
+			overflow-y : auto;
+			width : 100px;
+			height : 100px;
+			background-color: rgb(200,200,200);
+		}
+		
+		.alignee{
+			display: flex;
+			align : center;
+			float : right;
+			width: 100%;
+			height : 20%;
+			<!-- border-style : solid; -->
+					
+		}
+		
+		.demdemi{
+			flex : 1;
+			margin : 1%;
+			font-size : inherit;
+			border-radius : 30px;
+			text-align : center;
+		}
+		
+		.butt{
+			display: inline-block;
+			align : center;
+			background-color: rgb(200,220,250);
+			font-size : 100%;
+			border: none;
+			border-style : solid;
+			border-radius : 10px;
+			margin : 10px;
+		}
+		
+		.bigBtn{
+			background-color: rgb(200,220,250);
+			height : 50vh;
+		}
+			
+		#fond{
+			border-style : solid;
+			border-color : rgb(130,150,235);
+			position : fixed;
+			top : 0;
+			left : 0;
+			width : 100%;
+			height : 100%;
+			z-index:-1;
+		}
+
+			
+	</style>
+</head>
+
+<body>
+	<canvas id="fond">
+	</canvas>
+	
+	<div class="page" id="perso">
+		<!-- pour choisir son pseudo -->
+		
+		<h1>Vous êtes :</h1>
+		<!-- <div style="display: flex; justify-content: center; "> -->
+		<div class="somm">
+		<button onclick="ChP('A')" class="butt">Adam</button>
+		<button onclick="ChP('C')" class="butt">Corentin</button>
+		<button onclick="ChP('F')" class="butt">Fabien</button>
+		<button onclick="ChP('I')" class="butt">Ismael</button>
+		<button onclick="ChP('J')" class="butt">Jimmy</button>
+		<button onclick="ChP('M')" class="butt">Mathilde</button>
+		<button onclick="ChP('R')" class="butt">Rose</button>
+		<button onclick="ChP('')" class="butt" style="font-size : 80%;">None</button>
+		</div>
+	</div>
+	
+	
+	<div class="page" id="hub">
+		<!-- Pour savoir quoi faire ; infos -->
+		
+		<h2 style="font-family : cursive; ">Bet' Your choice !</h2>
+		
+			<div class="alignee">
+				<p id = "val_caisse_1" class="demdemi">caisse</p>
+				<p id = "val_parie_1" class="demdemi">parie</p>
+			</div>
+			<div class="alignee">
+				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn">Voir les évenements en cours</button>
+				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn" id="parr">Parier !</button>
+			</div>
+	</div>
+	
+	
+	<div class="page" id="vu">
+		<div class="alignee">
+			<p id = "val_caisse_1" class="demdemi">caisse</p>
+			<p id = "val_parie_1" class="demdemi">parie</p>
+		</div>
+		
+		<div id="listt" class="zonetexte">
+		<p>lol</p>
+		</div>
+	</div>
+	
+	
+	<div class="page" id="fair">
+		<div class="alignee">
+			<p id = "val_caisse_2" class="demdemi">caisse</p>
+			<p id = "val_parie_2" class="demdemi">parie</p>
+		</div>
+	</div>
+	
+	
+	<div style="position: fixed; top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
+	<p>Menu</p>
+	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
+	<button onclick="window.scrollTo({	top: 0, behavior: 'auto'});" class="butt"><></button>
+	</div>
+	<script>
+	//canvas fond ;
+	const H = document.getElementById("hub").offsetTop;
+	const canvas = document.getElementById("fond");	//récupère la surface ;
+	const cs = canvas.getContext("2d");			//récupère le 'crayon'
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	cs.fillStyle = "#a4ffee"	//"rgb(150,170,255)"
+	cs.fillRect(0, 0, canvas.width, canvas.height);
+	
+	window.scrollTo({
+		top: H,
+		behavior: "auto"
+	});
+	</script>
+	
+	<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCC7oYC2SrQK6MAdEeFw2K0G9ctBAcclt0",
+    authDomain: "enreg-online.firebaseapp.com",
+    databaseURL: "https://enreg-online-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "enreg-online",
+    storageBucket: "enreg-online.firebasestorage.app",
+    messagingSenderId: "521482799313",
+    appId: "1:521482799313:web:73e9f48e1334564f849df0",
+    measurementId: "G-X1RVSQYPNR"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase(app);
+</script>
+	
+	<script>
+	//init
+	
+	//alert("hello");	//pop-up d'info
+	
+	const perso = ["A", "J", "I", "C", "F", "R", "M"];
+	let pseudo = localStorage.getItem("pseudo");
+	
+	window.onload = () => {
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    if (perso.includes(pseudo)) {
+        window.scrollTo({ top: H, behavior: "auto" });
+		getinf();
+    }
+	};
+
+	
+	function ChP(n){
+		localStorage.setItem("pseudo", n);
+		document.getElementById("hub").scrollIntoView({ behavior: "auto" });
+		if (pseudo == ''){
+			document.getElementById("parr").parentNode.removeChild(document.getElementById("parr"));
+		}else{
+			getinf();
+		}
+			
+	}
+		
+	</script>
+	
+	<script>
+	<!-- logik -->
+	
+	let lparis;
+	
+	function getinf(){
+		
+		get(ref(db, f"Util/{pseudo}")).then((snapshot) => {
+			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
+			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
+			});
+			
+		onValue(ref(db, f"Util/{pseudo}"), (snapshot) => {
+			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
+			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
+		});
+		
+	}
+		
+	get(ref(db, "Paris")).then((snapshot)=>{
+		lparis = snapshot.val();
+		});
+	
+	let litt = document.getElementById("listt"){
+	for (let i in lparis){
+		let divv = document.createElement("div");
+		let tett = document.createElement("p");
+		tett.textContent = i;
+		
+		div.appendChild(tett);
+		litt.appendChild(divv);
+	}
+		
+		
+			
+	
+	onValue(ref(db, f"Util/{pseudo}"), (snapshot) => {
+		document.getElementById("val_caisse_1").innerHTML = snapshot.val();
+		document.getElementById("val_caisse_2").innerHTML = snapshot.val();
+	});
+
+			
+	
+	</script>
+</html>
