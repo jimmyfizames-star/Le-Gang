@@ -203,14 +203,13 @@
 	}
 	
 	</script>
+	    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+  
+<script>
 	
-	<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js"></script>
-	
-	<!-- <script src="https://gstatic.com"></script> -->
-<!-- <script src="https://gstatic.com"></script> -->
-	
-	<script>
+
   // Import the functions you need from the SDKs you need
   /*
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
@@ -244,7 +243,7 @@
   firebase.initializeApp(firebaseConfig);
   
   // 3. Define your database globally so your other scripts can see it right away
-  window.db = firebase.database();
+  const db = firebase.database();
   
   </script>
   
