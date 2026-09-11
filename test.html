@@ -15,7 +15,8 @@ from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 import {
     getDatabase,
     ref,
-    onValue
+    onValue,
+    get
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
@@ -42,7 +43,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
+const db = getDatabase(app);
 
 // Lire /test
 const testRef = ref(db, "test");
