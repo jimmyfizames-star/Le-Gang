@@ -44,14 +44,29 @@ const analytics = getAnalytics(app);
 
 
 // Lire /test
-const test = ref(db, "test");
+const testRef = ref(db, "test");
 
-onValue(test, (snapshot) => {
 
-    const data = snapshot.val();
+get(testRef)
+.then((snapshot) => {
 
-    document.getElementById("result").textContent =
-        JSON.stringify(data, null, 2);
+    if (snapshot.exists()) {
+
+        document.getElementById("result").innerText =
+            JSON.stringify(snapshot.val(), null, 2);
+
+    } else {
+
+        document.getElementById("result").innerText =
+            "La donnée /test n'existe pas.";
+
+    }
+
+})
+.catch((error) => {
+
+    document.getElementById("result").innerText =
+        "ERREUR : " + error.message;
 
 });
 
