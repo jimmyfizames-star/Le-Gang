@@ -203,24 +203,11 @@
 	}
 	
 	</script>
+	
 	<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
   
 <script>
-	
-
-  // Import the functions you need from the SDKs you need
-  /*
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-analytics.js";
-  import { getDatabase, ref, get, onValue }from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
-  */
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyCC7oYC2SrQK6MAdEeFw2K0G9ctBAcclt0",
     authDomain: "enreg-online.firebaseapp.com",
@@ -231,12 +218,6 @@
     appId: "1:521482799313:web:73e9f48e1334564f849df0",
     measurementId: "G-X1RVSQYPNR"
   };
-
-  // Initialize Firebase
-  /*
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  */
   
   
   // 2. Initialize using the global 'firebase' object (v8 classic syntax)
@@ -244,11 +225,7 @@
   
   // 3. Define your database globally so your other scripts can see it right away
   const db = firebase.database();
-  
-  </script>
-  
-  
-  <script>
+	
 	//init
 	
 	//alert("hello");	//pop-up d'info
@@ -256,7 +233,7 @@
 	const perso = ["A", "J", "I", "C", "F", "R", "M"];
 	let pseudo = localStorage.getItem("pseudo");
 	
-	window.onload = () => {
+    onload = () => {
 
     window.scrollTo({ top: 0, behavior: "auto" });
 
@@ -273,19 +250,19 @@
 	
 	function getinf(){
 		
-		db.get(db.ref(db, `Util/${pseudo}`)).then((snapshot) => {
+		get(db.ref(`Util/${pseudo}`)).then((snapshot) => {
 			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 			});
 			
-		db.onValue(db.ref(db, `Util/${pseudo}`), (snapshot) => {
+	    onValue(db.ref(`Util/${pseudo}`), (snapshot) => {
 			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 		});
 		
 	}
 		
-	get(db.ref(db, "Paris")).then((snapshot)=>{
+	get(db.ref("Paris")).then((snapshot)=>{
 		lparis = snapshot.val();
 		});
 	
@@ -303,7 +280,7 @@
 		
 			
 	
-	onValue(ref(db, `Util/${pseudo}`), (snapshot) => {
+	onValue(db.ref(`Util/${pseudo}`), (snapshot) => {
 		document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 		document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 	});
