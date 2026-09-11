@@ -250,19 +250,19 @@
 	
 	function getinf(){
 		
-		get(db.ref(`Util/${pseudo}`)).then((snapshot) => {
+		db.ref(`Util/${pseudo}`).once('value').then((snapshot) => {
 			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 			});
 			
-	    onValue(db.ref(`Util/${pseudo}`), (snapshot) => {
+	    db.ref(`Util/${pseudo}`).on('value'), (snapshot) => {
 			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 		});
 		
 	}
 		
-	get(db.ref("Paris")).then((snapshot)=>{
+  db.ref("Paris").once('value'), (snapshot)=>{
 		lparis = snapshot.val();
 		});
 	
