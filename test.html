@@ -8,6 +8,7 @@
 
 <script type="module">
 
+    alert("lol1");
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
@@ -45,7 +46,7 @@ const analytics = getAnalytics(app);
 
 // Lire /test
 const testRef = ref(db, "test");
-alert("lol")
+alert("lol2");
 
 get(testRef)
 .then((snapshot) => {
