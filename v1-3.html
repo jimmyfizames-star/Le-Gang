@@ -262,7 +262,7 @@
 		
 	}
 		
-  db.ref("Paris").once('value'), (snapshot)=>{
+  db.ref("Paris").once('value').then((snapshot)=>{
 		lparis = snapshot.val();
 		});
 	
