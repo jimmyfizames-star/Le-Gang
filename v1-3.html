@@ -239,7 +239,7 @@
 
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-			let vll = JSON.stringify(snapshot.val());
+			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(7,-1) + " $";
 			document.getElementById("val_caisse_1").innerHTML = vll;
 			document.getElementById("val_caisse_2").innerHTML = vll;
 			document.getElementById("val_caisse_3").innerHTML = vll;
