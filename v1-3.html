@@ -280,7 +280,7 @@
 		
 			
 	
-	onValue(db.ref(`Util/${pseudo}`), (snapshot) => {
+	db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 		document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 		document.getElementById("val_caisse_2").innerHTML = snapshot.val();
 	});
