@@ -166,7 +166,7 @@
 	</div>
 	
 	
-	<div style="position: fixed; top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
+	<div style="top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -239,9 +239,10 @@
 
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
-			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
-			document.getElementById("val_caisse_3").innerHTML = snapshot.val();
+			let vll = JSON.stringify(snapshot.val());
+			document.getElementById("val_caisse_1").innerHTML = vll;
+			document.getElementById("val_caisse_2").innerHTML = vll;
+			document.getElementById("val_caisse_3").innerHTML = vll;
 		});
 		
 	}
@@ -266,7 +267,7 @@
 		let divv = document.createElement("div");
 		divv.classList.add("cont");
 		let tett = document.createElement("p");
-		tett.textContent = i;
+		tett.textContent = JSON.stringify(i);
 		
 		divv.appendChild(tett);
 		litt.appendChild(divv);
