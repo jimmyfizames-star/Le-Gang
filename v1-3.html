@@ -146,8 +146,8 @@
 	
 	<div class="page" id="vu">
 		<div class="alignee">
-			<p id = "val_caisse_1" class="demdemi">caisse</p>
-			<p id = "val_parie_1" class="demdemi">parie</p>
+			<p id = "val_caisse_2" class="demdemi">caisse</p>
+			<p id = "val_parie_2" class="demdemi">parie</p>
 		</div>
 		
 		<div id="listt" class="zonetexte">
@@ -160,8 +160,8 @@
 	
 	<div class="page" id="fair">
 		<div class="alignee">
-			<p id = "val_caisse_2" class="demdemi">caisse</p>
-			<p id = "val_parie_2" class="demdemi">parie</p>
+			<p id = "val_caisse_3" class="demdemi">caisse</p>
+			<p id = "val_parie_3" class="demdemi">parie</p>
 		</div>
 	</div>
 	
@@ -232,6 +232,19 @@
 	
 	const perso = ["A", "J", "I", "C", "F", "R", "M"];
 	let pseudo = localStorage.getItem("pseudo");
+
+	let lparis;
+
+	function getinf(){
+
+			
+	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
+			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
+			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
+			document.getElementById("val_caisse_3").innerHTML = snapshot.val();
+		});
+		
+	}
 	
     onload = () => {
 
@@ -241,26 +254,8 @@
         window.scrollTo({ top: H, behavior: "auto" });
 		getinf();
     }
-	
-		
 
 	//Logik
-	
-	let lparis;
-	
-	function getinf(){
-		
-		db.ref(`Util/${pseudo}`).once('value').then((snapshot) => {
-			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
-			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
-			});
-			
-	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-			document.getElementById("val_caisse_1").innerHTML = snapshot.val();
-			document.getElementById("val_caisse_2").innerHTML = snapshot.val();
-		});
-		
-	}
 		
   db.ref("Paris").once('value').then((snapshot)=>{
 		lparis = snapshot.val();
@@ -273,7 +268,7 @@
 		let tett = document.createElement("p");
 		tett.textContent = i;
 		
-		div.appendChild(tett);
+		divv.appendChild(tett);
 		litt.appendChild(divv);
 	}
 		
@@ -283,6 +278,7 @@
 	db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 		document.getElementById("val_caisse_1").innerHTML = snapshot.val();
 		document.getElementById("val_caisse_2").innerHTML = snapshot.val();
+		document.getElementById("val_caisse_3").innerHTML = snapshot.val();
 	});
 
 			
