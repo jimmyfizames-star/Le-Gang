@@ -40,32 +40,22 @@ const db = getDatabase(app);
 
 // Lire /test
 const testRef = db.ref("test");
-
 document.getElementById("result").innerText = "Connecting....";
 
-get(testRef)
-.then((snapshot) => {
-
+db.ref("test").once("value")
+  .then((snapshot) => {
     if (snapshot.exists()) {
-
-        document.getElementById("result").innerText =
-            JSON.stringify(snapshot.val(), null, 2);
-
+      document.getElementById("result").innerText =
+        JSON.stringify(snapshot.val(), null, 2);
     } else {
-
-        document.getElementById("result").innerText =
-            "La donnée /test n'existe pas.";
-
+      document.getElementById("result").innerText =
+        "La donnée /test n'existe pas.";
     }
-
-})
-.catch((error) => {
-
+  })
+  .catch((error) => {
     document.getElementById("result").innerText =
-        "ERREUR : " + error.message;
-
-});
-
+      "ERREUR : " + error.message;
+  });
 </script>
 
 </body>
