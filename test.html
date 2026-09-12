@@ -43,7 +43,7 @@ const db = firebase.database();
 const testRef = db.ref("Paris");
 document.getElementById("result").innerText = "Connecting....";
 
-db.ref("test").once("value")
+db.ref("Paris").once("value")
   .then((snapshot) => {
     if (snapshot.exists()) {
       document.getElementById("result").innerText =
