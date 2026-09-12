@@ -125,6 +125,7 @@
 		<button onclick="ChP('R')" class="butt">Rose</button>
 		<button onclick="ChP('')" class="butt" style="font-size:3vmin;">None</button>
 		<!-- </div> -->
+		<p id="pseuav">..</p>
 	</div>
 	
 	
@@ -260,6 +261,9 @@
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
+
+			document.getElementById("pseuav").innerHTML = pseudo;
+			
 			document.getElementById("val_caisse_1").innerHTML = vll;
 			document.getElementById("val_caisse_2").innerHTML = vll;
 			document.getElementById("val_caisse_3").innerHTML = vll;
