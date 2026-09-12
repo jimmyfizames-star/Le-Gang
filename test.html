@@ -3,12 +3,16 @@
 <body>
 
 <h1>Test lecture Firebase</h1>
-
+ 
 <pre id="result">test...</pre>
 
-<script type="module">
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+	
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+<script>
     
-import { initializeApp }
+/*import { initializeApp }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
 
 import {
@@ -18,7 +22,7 @@ import {
     get
 }
 from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
-    
+    */
 const firebaseConfig = {
   apiKey: "AIzaSyCC7oYC2SrQK6MAdEeFw2K0G9ctBAcclt0",
   authDomain: "enreg-online.firebaseapp.com",
@@ -35,7 +39,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 // Lire /test
-const testRef = ref(db, "test");
+const testRef = db.ref("test");
 
 document.getElementById("result").innerText = "Connecting....";
 
