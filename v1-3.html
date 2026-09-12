@@ -142,7 +142,7 @@
 				<button onclick="window.scrollTo({	top: H*3, behavior: 'auto'});" class="demdemi bigBtn" id="parr">Parier !</button>
 			</div>
 
-		<div style="top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
+		<div style="left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -164,7 +164,7 @@
 		</div>
 		</div>
 
-		<div style="top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
+		<div style="left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -181,7 +181,7 @@
 		</div>
 
 		
-		<div style="top: 85vh; left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
+		<div style="left: 0; width: 100vw;  margin: 30px; display: flex; align : center; float : right;">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -215,8 +215,9 @@
 		pseudo = n;
 		if (pseudo == ''){
 			document.getElementById("parr").parentNode.removeChild(document.getElementById("parr"));
+			getinf(1,1);
 		}else{
-			getinf();
+			getinf(7,-1);
 		}
 			
 	}
@@ -254,11 +255,11 @@
 
 	let lparis;
 
-	function getinf(){
+	function getinf(av, apr){
 
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(7,-1) + " $";
+			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
 			document.getElementById("val_caisse_1").innerHTML = vll;
 			document.getElementById("val_caisse_2").innerHTML = vll;
 			document.getElementById("val_caisse_3").innerHTML = vll;
