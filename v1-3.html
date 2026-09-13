@@ -296,15 +296,6 @@
 		divv.appendChild(tett);
 		litt.appendChild(divv);
 	}
-		
-		
-			
-	
-	db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-		document.getElementById("val_caisse_1").innerHTML = snapshot.val();
-		document.getElementById("val_caisse_2").innerHTML = snapshot.val();
-		document.getElementById("val_caisse_3").innerHTML = snapshot.val();
-	});
 
 			
 	}
