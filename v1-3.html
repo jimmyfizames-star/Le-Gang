@@ -262,7 +262,7 @@
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
 
-			document.getElementById("pseuav").innerHTML = pseudo;
+			document.getElementById("pseuav").innerHTML = "actuellement ; " + pseudo;
 			
 			document.getElementById("val_caisse_1").innerHTML = vll;
 			document.getElementById("val_caisse_2").innerHTML = vll;
@@ -280,7 +280,7 @@
 		getinf(7,-1);
     }
 
-	//Logik
+	
 		
   db.ref("Paris").once('value').then((snapshot)=>{
 		lparis = snapshot.val();
