@@ -284,11 +284,12 @@
 
 	
 		
-  db.ref("Paris").once('value').then((snapshot)=>{
+  db.ref("Paris").on('value', (snapshot)=>{
 		lparis = snapshot.val();
 
 	
 	let litt = document.getElementById("listt");
+	litt.innerHtml = "";
 	for (let i in lparis){
 		let divv = document.createElement("div");
 		divv.classList.add("cont"); 
