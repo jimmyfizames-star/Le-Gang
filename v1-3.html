@@ -294,10 +294,13 @@
 	for (let i in lparis){
 		let divv = document.createElement("div");
 		divv.classList.add("cont"); 
-		let tett = document.createElement("p");
-		tett.textContent = JSON.stringify(lparis[i]);
-		
-		divv.appendChild(tett);
+		let tett1 = document.createElement("p");
+		let tett2 = document.createElement("p");
+		//tett.textContent = JSON.stringify(lparis[i]);
+		tett1.textContent = lparis[i]["Nom"];
+		tett2.textContent = lparis[i]["Act"];
+		divv.appendChild(tett1);
+		divv.appendChild(tett2);
 		litt.appendChild(divv);
 	}
 
