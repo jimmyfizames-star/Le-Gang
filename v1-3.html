@@ -47,11 +47,11 @@
 			overflow-y: auto;
 			width: 80vmin;
 			height: 60vh;
-			background-color: rgb(180,180,180);
+			background-color: rgb(200,200,200);
 		}
 
 		.tzontxt{
-			background-color: rgb(210,210,210);
+			background-color: rgb(180,180,180);
 			border-radius: 20px;
 			margin: 18px;
 		}
@@ -309,10 +309,10 @@
 
 		let J = "";
 		for (let j in lparis[i]["Act"]){
-		        J += "• " + mlparis[i]["Act"] + " : " + lparis[i]["Act"][j] + "\n";
+		        J += "• " + mlparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $\n";
 			}
 		tett2.textContent = J;
-		tett2.classList.add("");
+		//tett2.classList.add("tzontxt");
 		
 		divv.appendChild(tett2);
 		litt.appendChild(divv);
