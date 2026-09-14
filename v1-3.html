@@ -304,10 +304,16 @@
 		let tett2 = document.createElement("p");
 		//tett.textContent = JSON.stringify(lparis[i]);
 		tett1.textContent = lparis[i]["Nom"];
-		tett2.textContent = lparis[i]["Act"];
 		tett1.classList.add("tzontxt");
-		tett2.classList.add("tzontxt");
 		divv.appendChild(tett1);
+
+		let J = "";
+		for (let j in lparis[i]["Act"]){
+		        J += "• " + mlparis[i]["Act"] + " : " + lparis[i]["Act"][j] + "\n";
+			}
+		tett2.textContent = J;
+		tett2.classList.add("");
+		
 		divv.appendChild(tett2);
 		litt.appendChild(divv);
 	}
