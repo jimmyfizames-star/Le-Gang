@@ -42,11 +42,12 @@
 		}
 		
 		.zonetexte{
+			display: block;
 			border-radius: 20px;
 			padding:5vmin;
 			margin: 5vmin;
 			/*overflow-y: auto;*/
-			width: 80vw;
+			/*width: 80vw;*/
 			height: 60vh;
 			background-color: rgb(220,220,220);
 		}
@@ -318,7 +319,7 @@
 
 		let J = "";
 		for (let j in lparis[i]["Act"]){
-		        J += "• " + lparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $<br>";
+		        J += "• " + lparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $\n";
 			}
 		tett2.textContent = J;
 		tett2.classList.add("tzontxt2");
