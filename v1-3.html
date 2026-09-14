@@ -52,6 +52,7 @@
 		}
 
 		.tzontxt{
+			text-align: center;
 			background-color: rgb(200,200,200);
 			border-style: solid;
 			border-radius: 20px;
@@ -59,6 +60,7 @@
 		}
 
 		.tzontxt2{
+			text-align: left;
 			background-color: rgb(210,210,210);
 			margin: 5px;
 		}
@@ -316,7 +318,7 @@
 
 		let J = "";
 		for (let j in lparis[i]["Act"]){
-		        J += "• " + lparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $\n";
+		        J += "• " + lparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $<br>";
 			}
 		tett2.textContent = J;
 		tett2.classList.add("tzontxt2");
