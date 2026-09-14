@@ -69,7 +69,7 @@
 		}
 		
 		.butt{
-			display: inline-block;
+			
 			align: center;
 			height: 10vmin;
 			
@@ -139,6 +139,7 @@
 				<p id = "val_caisse_1" class="demdemi">caisse</p>
 				<p id = "val_parie_1" class="demdemi">parie</p>
 			</div>
+		
 			<div class="alignee">
 				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn">Voir les évenements en cours</button>
 				<button onclick="window.scrollTo({	top: H*3, behavior: 'auto'});" class="demdemi bigBtn" id="parr">Parier !</button>
@@ -289,7 +290,7 @@
 
 	
 	let litt = document.getElementById("listt");
-	litt.innerHtml = "";
+	litt.innerHTML = "";
 	for (let i in lparis){
 		let divv = document.createElement("div");
 		divv.classList.add("cont"); 
