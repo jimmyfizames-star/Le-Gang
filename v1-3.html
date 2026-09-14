@@ -43,8 +43,8 @@
 		.zonetexte{
 			border-radius: 20px;
 			padding:5vmin;
-			margin: 10vmin;
-			overflow-y: auto;
+			margin: 5vmin;
+			/*overflow-y: auto;*/
 			width: 80vw;
 			height: 60vh;
 			background-color: rgb(220,220,220);
@@ -54,7 +54,12 @@
 			background-color: rgb(200,200,200);
 			border-style: solid;
 			border-radius: 20px;
-			margin: 18px;
+			margin: 10px;
+		}
+
+		.tzontxt2{
+			background-color: rgb(210,210,210);
+			margin: 5px;
 		}
 		
 		.alignee{
@@ -310,10 +315,10 @@
 
 		let J = "";
 		for (let j in lparis[i]["Act"]){
-		        J += "• " + mlparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $\n";
+		        J += "• " + lparis[i]["Act"][j] + " : " + lparis[i]["Act"][j][lparis[i]["Act"][j]] + " $\n";
 			}
 		tett2.textContent = J;
-		//tett2.classList.add("tzontxt");
+		tett2.classList.add("tzontxt2");
 		
 		divv.appendChild(tett2);
 		litt.appendChild(divv);
