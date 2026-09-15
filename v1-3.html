@@ -234,10 +234,10 @@
 	let yC= canvas.width*math.random();
 	let aC= math.random()*math.PI*2
     function loop(){
-		xC=
+		xC=0;
     requestAnimationFrame(loop());
 	}
-    loop();
+    //loop();
 	window.scrollTo({
 		top: H,
 		behavior: "auto"
@@ -381,7 +381,7 @@
 		if(val<min){
 			return min;
 		}else if(val>max){
-			rerurn max;
+			return max;
 		}
 		return val;
 	}
