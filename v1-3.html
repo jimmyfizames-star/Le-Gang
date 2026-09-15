@@ -72,6 +72,10 @@
 			display: flex;
 			flex-direction: row;
 		}
+
+		.bas{
+			margin-top: auto;
+		}
 		
 		.demdemi{
 			flex: 1;
@@ -155,7 +159,7 @@
 				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn">Voir les évenements en cours</button>
 				<button onclick="window.scrollTo({	top: H*3, behavior: 'auto'});" class="demdemi bigBtn" id="parr">Parier !</button>
 			</div>
-		<div class="alignee" style="top: 1.8*H">
+		<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -177,7 +181,7 @@
 		</div>-->
 		</div>
 
-		<div class="alignee">
+		<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
@@ -194,7 +198,7 @@
 		</div>
 
 		
-	<div class="alignee">
+	<div class="alignee bas">
 			
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
@@ -210,6 +214,8 @@
 	<script>
 	//canvas fond ;
 	const H = document.getElementById("hub").offsetTop;
+
+    document.requestFullscreen();
 	const canvas = document.getElementById("fond");	 //récupère la surface ;
 	const cs = canvas.getContext("2d");			     //récupère le 'crayon'
 	canvas.width = window.innerWidth;
