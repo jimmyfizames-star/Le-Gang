@@ -203,7 +203,7 @@
 		<br>
 		<p>misez ;</p>
 		<input type="range" id="curseurV">
-		<input type="text" id="chotext">
+		<input type="number" id="chotext">
 		<button ondblclick="envr(1)">=></button>
 	<div class="alignee bas">
 	<p>Menu</p>
@@ -289,7 +289,7 @@
 
 	let lparis;
 	let N;
-
+    let cnt;
 	let parr = 1;
 
 	function getinf(av, apr){
@@ -297,6 +297,7 @@
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
+			cnt = snapshot.val()["Mon"];
 
 			document.getElementById("pseuav").innerHTML = "actuellement ; " + pseudo;
 			
@@ -381,7 +382,9 @@
         fuchotext.value = event.target.value; 
 	});
 	chotext.addEventListener('input', (event) => {
-        curseur.value = event.target.value; 
+		let ratt = clamp(event.target.value, 0, cnt);
+		chotext.value = ratt;
+        curseur.value = ratt;
 	});
 	
 	function envr(t){
