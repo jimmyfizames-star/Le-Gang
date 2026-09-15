@@ -379,21 +379,21 @@
 		if(t==1){
 			let tit = document.getElementById("tit");
 			let parrU = document.getElementById("parr");
+			let rng = N+1;
 			if(tit != "" || parr != ""){
-			db.ref("Paris").push({
-				{(N+1) : {
-				         "Nom" : tit,
-						 "Act" : { pseudo : parrU}
-			              }}
-			});
+			    db.ref("Paris").push({
+				    rng: {
+				        "Nom": tit,
+						"Act": { pseudo: parrU }
 					}
-			
-
+				});
+			}
+			            
 			}else{
 				alert("://");
 			}
 		}else if(t==2){
-			
+			;
 		}
 	}
 </script>
