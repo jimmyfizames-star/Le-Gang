@@ -10,7 +10,6 @@
 		body{
 			/* overflow: hidden; */
 			font-size: 5vmin;
-			border-style: solid;
 			
 		}
 		
@@ -69,6 +68,7 @@
 		}
 		
 		.alignee{
+			border-style: solid;
 			text-align: center;
 			/*display: inline-block;*/
 			display: flex;
@@ -311,15 +311,18 @@
 	let litt = document.getElementById("listt");
 	litt.innerHTML = "";
 	for (let i in lparis){
+		//conteneur ---
 		let divv = document.createElement("div");
 		divv.classList.add("cont"); 
+		//titre
 		let tett1 = document.createElement("p");
-		let tett2 = document.createElement("p");
 		//tett.textContent = JSON.stringify(lparis[i]);
 		tett1.textContent = lparis[i]["Nom"];
 		tett1.classList.add("tzontxt");
 		divv.appendChild(tett1);
 
+		//parieurs
+        let tett2 = document.createElement("p");
 		let J = "";
 		for (let j in lparis[i]["Act"]){
 		        J += "• " + j + " : " + lparis[i]["Act"][j] + " $\n";
@@ -328,6 +331,20 @@
 		tett2.classList.add("tzontxt2");
 		
 		divv.appendChild(tett2);
+
+		//actions
+		let divv2 = document.createElement("div");
+		divv2.classList.add("alignee");
+		//bouton rejoindre :
+		let btnR = document.createElement("button");
+
+        divv2.appendChild(btnN);
+		//bouton valider :
+		let btnV = document.createElement("button");
+
+		divv2.appendChild(btnV);
+		divv.appendChild(divv2)
+		
 		litt.appendChild(divv);
 	}
 
