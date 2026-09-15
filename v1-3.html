@@ -204,7 +204,7 @@
 		<p>misez ;</p>
 		<input type="range" min="0" id="curseurV">
 		<input type="number" id="chotext">
-		<button ondblclick="envr(1)">=></button>
+		<button onclick="envr(1)">=></button>
 	<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
@@ -292,11 +292,11 @@
     let cnt;
 	let parr = 1;
 
-	function getinf(av, apr){
+	function getinf(){
 
 			
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
-			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
+			let vll = "perso : " + JSON.stringify(snapshot.val()["Mon"]) + " $";
 			cnt = snapshot.val()["Mon"];
 			document.getElementById("curseurV").max = cnt;
 
@@ -315,7 +315,7 @@
 
     if (perso.includes(pseudo)) {
         window.scrollTo({ top: H, behavior: "auto" });
-		getinf(7,-1);
+		getinf();
     }
 
 	
