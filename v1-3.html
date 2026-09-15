@@ -14,10 +14,9 @@
 			
 		}
 		
-		button{
+		button,input{
 			padding: 10px;
 			font-size: 4vmin;
-			
 			}
 		
 		.page {
@@ -205,7 +204,7 @@
 		<p>misez ;</p>
 		<input type="range">
 		<input type="text">
-		<button ondblclick="envr(1)"></button>
+		<button ondblclick="envr(1)">=></button>
 	<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
@@ -289,6 +288,7 @@
 	let pseudo = localStorage.getItem("pseudo");
 
 	let lparis;
+	let N;
 
 	let parr = 1;
 
@@ -320,7 +320,7 @@
 		
   db.ref("Paris").on('value', (snapshot)=>{
 		lparis = snapshot.val();
-
+        N=lparis.length;
 	
 	let litt = document.getElementById("listt");
 	litt.innerHTML = "";
@@ -376,8 +376,25 @@
 	}
 
 	function envr(t){
-		if 
-    
+		if(t==1){
+			let tit = document.getElementById("tit");
+			let parrU = document.getElementById("parr");
+			if(tit != "" || parr != ""){
+			db.ref("Paris").push({
+				{(N+1) : {
+				         "Nom" : tit,
+						 "Act" : { pseudo : parrU}
+			              }}
+			});
+					}
+			
+
+			}else{
+				alert("://");
+			}
+		}else if(t==2){
+			
+		}
 	}
 </script>
 </html>
