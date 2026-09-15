@@ -400,13 +400,11 @@
 		if(t==1){
 			let tit = document.getElementById("tit").value;
 			let parrU = document.getElementById("curseurV").value;
-			let rng = N+1;
+			//let rng = ;
 			if(tit != "" || parr != ""){
-			    db.ref("Paris").set({
-				    [rng]: {
+			    db.ref("Paris").push({
 				        "Nom": tit,
 						"Act": { pseudo: parrU }
-					}
 				});
 			
 			            
