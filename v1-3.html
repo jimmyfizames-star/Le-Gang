@@ -102,8 +102,8 @@
 		}
 			
 		#fond{
-			border-style: solid;
-			border-color: rgb(130,150,235);
+			/*border-style: solid;
+			border-color: rgb(130,150,235);*/
 			position: fixed;
 			top: 0;
 			left: 0;
@@ -217,7 +217,7 @@
 	const H = document.getElementById("hub").offsetTop;
 
     //document.requestFullscreen();
-	/*
+	
 	const canvas = document.getElementById("fond");	 //récupère la surface ;
 	const cs = canvas.getContext("2d");			     //récupère le 'crayon'
 	canvas.width = window.innerWidth;
@@ -225,7 +225,14 @@
 
 	cs.fillStyle = "#a4ffee"	//"rgb(150,170,255)"
 	cs.fillRect(0, 0, canvas.width, canvas.height);
-	*/
+    let xC= canvas.width*math.random();
+	let yC= canvas.width*math.random();
+	let aC= math.random()*math.PI*2
+    function loop(){
+		xC=
+    requestAnimationFrame(loop());
+	}
+    loop();
 	window.scrollTo({
 		top: H,
 		behavior: "auto"
