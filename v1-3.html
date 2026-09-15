@@ -337,11 +337,13 @@
 		divv2.classList.add("alignee");
 		//bouton rejoindre :
 		let btnR = document.createElement("button");
-
-        divv2.appendChild(btnN);
+		btnR.textContent = "rejoindre";
+		btnR.addEventListener("ondblclick",rej(i));
+        divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
-
+		btnV.textContent = "valider " + i;
+		btnV.addEventListener("ondblclick", valie(i))
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -349,6 +351,14 @@
 	}
 
 		});
+	}
+
+	function rej(n){
+		;
+	}
+
+	function valie(n){
+		;
 	}
 </script>
 </html>
