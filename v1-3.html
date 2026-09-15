@@ -298,6 +298,7 @@
 	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
 			let vll = "perso : " + JSON.stringify(snapshot.val()).slice(av,apr) + " $";
 			cnt = snapshot.val()["Mon"];
+			document.getElementById("curseurV").max = cnt;
 
 			document.getElementById("pseuav").innerHTML = "actuellement ; " + pseudo;
 			
@@ -376,6 +377,14 @@
 		;
 	}
 
+	function clamp(val, min, max){
+		if(val<min){
+			return min;
+		}else if(val>max){
+			rerurn max;
+		}
+		return val;
+	}
 	const curseur = document.getElementById("curseurV");
 	const chotext = document.getElementById("chotext");
 	curseur.addEventListener('input', (event) => {
