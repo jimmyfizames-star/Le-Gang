@@ -199,11 +199,11 @@
 
 		<h1>créez votre parie !</h1>
 		<p>titre ;</p>
-		<input type="text">
+		<input type="text" id="tit">
 		<br>
 		<p>misez ;</p>
-		<input type="range">
-		<input type="text">
+		<input type="range" id="curseurV">
+		<input type="text" id="chotext">
 		<button ondblclick="envr(1)">=></button>
 	<div class="alignee bas">
 	<p>Menu</p>
@@ -375,10 +375,19 @@
 		;
 	}
 
+	const curseur = document.getElementById("curseurV");
+	const chotext = document.getElementById("chotext");
+	curseur.addEventListener('input', (event) => {
+        fuchotext.value = event.target.value; 
+	});
+	chotext.addEventListener('input', (event) => {
+        curseur.value = event.target.value; 
+	});
+	
 	function envr(t){
 		if(t==1){
-			let tit = document.getElementById("tit");
-			let parrU = document.getElementById("parr");
+			let tit = document.getElementById("tit").value;
+			let parrU = document.getElementById("curseurV").value;
 			let rng = N+1;
 			if(tit != "" || parr != ""){
 			    db.ref("Paris").push({
