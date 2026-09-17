@@ -384,12 +384,12 @@
 		//bouton rejoindre :
 		let btnR = document.createElement("button");
 		btnR.textContent = "rejoindre";
-		btnR.addEventListener("ondblclick",rej(i));
+		btnR.addEventListener("onclick",rej(i));
         divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
 		btnV.textContent = "valider " + i;
-		btnV.addEventListener("ondblclick", valie(i))
+		btnV.addEventListener("onclick", valie(i))
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -407,22 +407,20 @@
 	}
 
 	function rej(n){
+		window.scrollTo({	top: H*3, behavior: 'auto'});
 		document.getElementById("rejpari").display="block";
 		document.getElementById("creepari").display="none";
 		document.getElementById("valipari").display="none";
 		
 		document.getElementById("curseurV").min = -cnt;
 		document.getElementById("chotext").min = -cnt;
-		window.scrollTo({	top: 3*H, behavior: 'auto'});
 	}
 
 	function valie(n){
+		window.scrollTo({	top: H*3, behavior: 'auto'});
 		document.getElementById("rejpari").display="none";
 		document.getElementById("creepari").display="none";
 		document.getElementById("valipari").display="block";
-		
-		window.scrollTo({    top: 3*H, behavior: 'auto'});
-		
 		}
 
 	function clamp(val, min, max){
