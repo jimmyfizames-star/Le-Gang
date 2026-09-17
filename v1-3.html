@@ -372,6 +372,7 @@
 
 	function rej(n){
 		document.getElementById("curseurV").min = -cnt;
+		document.getElementById("chotext").min = -cnt;
 		
 	}
 
@@ -394,14 +395,13 @@
         chotext.value = event.target.value; 
 	});
 	chotext.addEventListener('input', (event) => {
-		let ratt = clamp(event.target.value
-		if(
-		let ratt = clamp(event.target.value, 0, cnt);
+		
+		let ratt = clamp(event.target.value, document.getElementById("curseurV").min, document.getElementById("curseurV").max);
 		chotext.value = ratt;
         curseur.value = ratt;
 	});
 	
-	function envr(t){
+	function envr(t, n){
 		if(t==1){
 			let tit = document.getElementById("tit").value;
 			let parrU = document.getElementById("curseurV").value;
@@ -418,7 +418,10 @@
 			}
 		}else if(t==2){
 			let parrU = document.getElementById("curseurV").value;
-			
+			db.ref(`Paris/${}`).push({
+				        "Nom": tit,
+						"Act": { [pseudo]: parrU }
+				});
 		}
 	}
 </script>
