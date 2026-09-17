@@ -119,7 +119,14 @@
 			border-color: rgb(100,100,100);
 		}
 
-			
+		#curseurV{
+			width: 50vw;
+			height: 5vmin;
+		}
+		#chotext{
+			height: 5vmin;
+			width: 10vmin;
+		}
 	</style>
 </head>
 
@@ -158,7 +165,7 @@
 		
 			<div class="alignee">
 				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn">Voir les évenements en cours</button>
-				<button onclick="window.scrollTo({	top: H*3, behavior: 'auto'});" class="demdemi bigBtn" id="parr">Parier !</button>
+				<button onclick="pariee();" class="demdemi bigBtn" id="parr">Parier !</button>
 			</div>
 		<div class="alignee">
 	<p>Menu</p>
@@ -197,7 +204,7 @@
 			<p id = "val_caisse_3" class="demdemi">caisse</p>
 			<p id = "val_parie_3" class="demdemi">parie</p>
 		</div>
-
+        <div id="creepari">
 		<h1>créez votre parie !</h1>
 		<p>titre ;</p>
 		<input type="text" id="tit">
@@ -206,12 +213,30 @@
 		<input type="range" min="0" id="curseurV">
 		<input type="number" id="chotext">
 		<button onclick="envr(1)">=></button>
+		</div>
+		<div id="rejpari">
+			
+		    <p>misez ;</p>
+		    <input type="range" id="curseurV2">
+		    <input type="number" id="chotext2">
+			<button onclick="envr(2)">=></button>
+
+
+		</div>
+		<div id="valipari">
+			
+
+
+		</div>
 	<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 	<p>parametre</p>
 	<button onclick="window.scrollTo({	top: 0, behavior: 'auto'});" class="butt"><></button>
 		</div>
+		
+
+		
 	</div>
 	
 	
@@ -289,9 +314,11 @@
 	let pseudo = localStorage.getItem("pseudo");
 
 	let lparis;
-	let N;
+	let N; //le nombre de pari en cours 
     let cnt;
 	let parr = 1;
+
+	let n;//le pari à valider
 
 	function getinf(){
 
@@ -370,15 +397,31 @@
 		});
 	}
 
+	function pariee(){
+		window.scrollTo({	top: 0, behavior: 'auto'});
+		document.getElementById("rejpari").display="none";
+		document.getElementById("creepari").display="block";
+		document.getElementById("valipari").display="none";
+	}
+
 	function rej(n){
+		document.getElementById("rejpari").display="block";
+		document.getElementById("creepari").display="none";
+		document.getElementById("valipari").display="none";
+		
 		document.getElementById("curseurV").min = -cnt;
 		document.getElementById("chotext").min = -cnt;
-		
+		window.scrollTo({	top: 3*H, behavior: 'auto'});
 	}
 
 	function valie(n){
-		;
-	}
+		document.getElementById("rejpari").display="none";
+		document.getElementById("creepari").display="none";
+		document.getElementById("valipari").display="block";
+		
+		window.scrollTo({    top: 3*H, behavior: 'auto'});
+		
+		}
 
 	function clamp(val, min, max){
 		if(val<min){
@@ -395,13 +438,12 @@
         chotext.value = event.target.value; 
 	});
 	chotext.addEventListener('input', (event) => {
-		
 		let ratt = clamp(event.target.value, document.getElementById("curseurV").min, document.getElementById("curseurV").max);
 		chotext.value = ratt;
         curseur.value = ratt;
 	});
 	
-	function envr(t, n){
+	function envr(t){
 		if(t==1){
 			let tit = document.getElementById("tit").value;
 			let parrU = document.getElementById("curseurV").value;
@@ -418,7 +460,7 @@
 			}
 		}else if(t==2){
 			let parrU = document.getElementById("curseurV").value;
-			db.ref(`Paris/${}`).push({
+			db.ref(`Paris/${n}`).push({
 				        "Nom": tit,
 						"Act": { [pseudo]: parrU }
 				});
