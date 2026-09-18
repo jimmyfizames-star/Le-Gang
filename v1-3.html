@@ -185,16 +185,12 @@
 		</div>
 		
 		<div id="listt" class="zonetexte">
-		<!--<div class="cont">
-		<p>lol</p>
-		</div>-->
 		</div>
 
 		<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
-	<p>parametre</p>
-	<button onclick="window.scrollTo({	top: 0, behavior: 'auto'});" class="butt"><></button>
+	
 		</div>
 		
 	</div>
@@ -234,8 +230,6 @@
 	<div class="alignee bas">
 	<p>Menu</p>
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
-	<p>parametre</p>
-	<button onclick="window.scrollTo({	top: 0, behavior: 'auto'});" class="butt"><></button>
 		</div>
 		
 
@@ -385,12 +379,12 @@
 		//bouton rejoindre :
 		let btnR = document.createElement("button");
 		btnR.textContent = "rejoindre";
-		btnR.addEventListener("click",() => rej(i));
+		btnR.addEventListener("onclick",() => rej(i));
         divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
 		btnV.textContent = "valider " + i;
-		btnV.addEventListener("click", () => valie(i));
+		btnV.addEventListener("onclick", () => valie(i));
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -503,6 +497,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 });
 
 		window.scrollTo({	top: H, behavior: 'auto'});
+	}
 	}
 </script>
 </html>
