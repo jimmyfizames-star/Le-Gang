@@ -205,7 +205,7 @@
 		<input type="text" id="tit">
 		<br>
 		<p>misez ;</p>
-		<input type="range" min="0" id="curseurV class="cV">
+		<input type="range" min="0" id="curseurV" class="cV">
 		<input type="number" id="chotext" class="cT">
 		<button onclick="envr(1)">=></button>
 		</div>
@@ -377,12 +377,12 @@
 		//bouton rejoindre :
 		let btnR = document.createElement("button");
 		btnR.textContent = "rejoindre";
-		btnR.addEventListener("onclick",() => rej(i));
+		btnR.addEventListener("click",() => rej(i));
         divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
 		btnV.textContent = "valider " + i;
-		btnV.addEventListener("onclick", () => valie(i));
+		btnV.addEventListener("click", () => valie(i));
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -407,8 +407,8 @@
 		document.getElementById("creepari").style.display="none";
 		document.getElementById("valipari").style.display="none";
 		
-		document.getElementById("curseurV").min = -cnt;
-		document.getElementById("chotext").min = -cnt;
+		document.getElementById("curseurV2").min = -cnt;
+		document.getElementById("chotext2").min = -cnt;
 	}
 
 	function valie(id){
@@ -438,8 +438,7 @@
 		chotext.value = ratt;
         curseur.value = ratt;
 	});
-
-	const curseur2 = document.getElementById("curseurV2");
+const curseur2 = document.getElementById("curseurV2");
 const chotext2 = document.getElementById("chotext2");
 curseur2.addEventListener('input', (event) => {
     chotext2.value = event.target.value;
@@ -461,8 +460,8 @@ chotext2.addEventListener('input', (event) => {
 						"Act": { [pseudo]: parrU }
 				});
 				
-			db.ref(`Util/${pseudo}/Mon`).update({
-				(cnt-parrU)
+			db.ref(`Util/${pseudo}`).update({
+				Mon : cnt-parrU
 					});
 			            
 			}else{
@@ -487,7 +486,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
     });
 }).then(() => {
     // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
-    return db.ref(`Utilis/${pseudo}`).update({
+    return db.ref(`Util/${pseudo}`).update({
         "Mon": (cnt - chang)
     });
 }).catch((error) => {
