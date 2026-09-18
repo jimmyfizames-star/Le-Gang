@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>GANG PARI</title>
+	<!-- Pactum, penis meum suge -->
+	
+	<style>
+		
+		body{
+		    overflow: hidden; 
+			font-size: 5vmin;
+			background-color: #a4ffee;
+			
+		}
+		
+		button,input{
+			padding: 10px;
+			font-size: 4vmin;
+			}
+		
+		.page {
+		border-style: solid;
+		height: 100vh;
+		width: 100%;
+		}
+		
+		h1, h2{
+			text-align: center;
+			margin: 20px;
+			
+		}
+		.ecr{
+			width: 100vw;
+			height: 100vh;
+			top: 0px;
+			right: 0px;
+			z-index: -1px;
+			border-style: solid;
+			
+		}
+		
+		.zonetexte{
+			border-radius: 20px;
+			padding:5vmin;
+			margin: 5vmin;
+			overflow-y: auto;
+			height: 60vh;
+			background-color: rgb(220,220,220);
+			overflow-wrap: break-word;
+		}
+
+		.tzontxt{
+			display: block;
+			box-sizing: border-box;
+			text-align: center;
+			background-color: rgb(200,200,200);
+			border-style: solid;
+			border-radius: 20px;
+			margin: 10px;
+		}
+
+		.tzontxt2{
+			white-space: pre-line;
+			text-align: left;
+			background-color: rgb(210,210,210);
+			margin: 5px;
+		}
+		
+		.alignee{
+			/*border-style: solid;*/
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+			margin: 10px;
+		}
+
+		.bas{
+			margin-top: 20%;
+		}
+		
+		.demdemi{
+			flex: 1;
+			margin: 1vmin;
+			border-radius: 30px;
+			text-align: center;
+		}
+		
+		.butt{
+			
+			text-align: center;
+			height: 10vmin;
+			background-color: rgb(200,220,250);
+			border-style: solid;
+			border-radius: 10px;
+			border-color: rgb(200,200,200);
+			margin: 10px;
+		}
+		
+		.bigBtn{
+			background-color: rgb(200,220,250);
+			height: 50vh;
+		}
+			
+		#fond{
+			/*border-style: solid;
+			border-color: rgb(130,150,235);*/
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index:-1;
+		}
+		
+		.cont{
+			margin: 10px;
+			border-style: solid;
+			border-radius: 5px;
+			border-color: rgb(100,100,100);
+		}
+
+		.cV{
+			width: 50vw;
+			height: 5vmin;
+		}
+		.cT{
+			height: 5vmin;
+			width: 10vmin;
+		}
+	</style>
+</head>
+
+<body>
+	<canvas id="fond">
+	</canvas>
+	
+	<div class="page" id="perso">
+		<!-- pour choisir son pseudo -->
+		
+		<h1>Vous êtes :</h1>
+		<!-- <div style="display: flex; justify-content: center; "> -->
+		<!-- <div class="somm"> -->
+		<button onclick="ChP('A')" class="butt">Adam</button>
+		<button onclick="ChP('C')" class="butt">Corentin</button>
+		<button onclick="ChP('F')" class="butt">Fabien</button>
+		<button onclick="ChP('I')" class="butt">Ismael</button>
+		<button onclick="ChP('J')" class="butt">Jimmy</button>
+		<button onclick="ChP('M')" class="butt">Mathilde</button>
+		<button onclick="ChP('R')" class="butt">Rose</button>
+		<button onclick="ChP('')" class="butt" style="font-size:3vmin;">None</button>
+		<!-- </div> -->
+		<p id="pseuav">..</p>
+	</div>
+	
+	
+	<div class="page" id="hub">
+		<!-- Pour savoir quoi faire ; infos -->
+		
+		<h2 style="font-family : cursive; ">Bet' Your choice !</h2>
+		
+			<div class="alignee">
+				<p id = "val_caisse_1" class="demdemi">caisse</p>
+				<p id = "val_parie_1" class="demdemi">parie</p>
+			</div>
+		
+			<div class="alignee">
+				<button onclick="window.scrollTo({	top: H*2, behavior: 'auto'});" class="demdemi bigBtn">Voir les évenements en cours</button>
+				<button onclick="pariee();" class="demdemi bigBtn" id="parr">Parier !</button>
+			</div>
+		<div class="alignee">
+	<p>parametre</p>
+	<button onclick="window.scrollTo({	top: 0, behavior: 'auto'});" class="butt"><></button>
+		</div>
+		
+	</div>
+	
+	
+	<div class="page" id="vu">
+		<div class="alignee">
+			<p id = "val_caisse_2" class="demdemi">caisse</p>
+			<p id = "val_parie_2" class="demdemi">parie</p>
+		</div>
+		
+		<div id="listt" class="zonetexte">
+		</div>
+
+		<div class="alignee bas">
+	<p>Menu</p>
+	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
+	
+		</div>
+		
+	</div>
+	
+	
+	<div class="page" id="fair">
+		<div class="alignee">
+			<p id = "val_caisse_3" class="demdemi">caisse</p>
+			<p id = "val_parie_3" class="demdemi">parie</p>
+		</div>
+        <div id="creepari">
+		<h1>créez votre parie !</h1>
+		<p>titre ;</p>
+		<input type="text" id="tit">
+		<br>
+		<p>misez ;</p>
+		<input type="range" min="0" id="curseurV" class="cV">
+		<input type="number" id="chotext" class="cT">
+		<button onclick="envr(1)">=></button>
+		</div>
+		<div id="rejpari">
+			
+		    <p>misez ;</p>
+		    <input type="range" id="curseurV2" class="cV">
+		    <input type="number" id="chotext2" class="cT">
+			<button onclick="envr(2)">=></button>
+
+
+		</div>
+		<div id="valipari">
+			
+            <p>le pari :</p>
+            <div class="alignee bas">
+				
+			</div>
+		</div>
+	<div class="alignee bas">
+	<p>Menu</p>
+	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
+		</div>
+		
+
+		
+	</div>
+	
+	
+	
+	
+	</body>
+	<script>
+	//canvas fond ;
+	const H = document.getElementById("hub").offsetTop;
+
+    //document.requestFullscreen();
+	
+	const canvas = document.getElementById("fond");	 //récupère la surface ;
+	const cs = canvas.getContext("2d");			     //récupère le 'crayon'
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	cs.fillStyle = "#a4ffee"	//"rgb(150,170,255)"
+	cs.fillRect(0, 0, canvas.width, canvas.height);
+    let xC= canvas.width*Math.random();
+	let yC= canvas.width*Math.random();
+	let aC= Math.random()*Math.PI*2
+    function loop(){
+		xC=0;
+    requestAnimationFrame(loop);
+	}
+    //loop();
+	window.scrollTo({
+		top: H,
+		behavior: "auto"
+	});
+	
+	function ChP(n){
+		localStorage.setItem("pseudo", n);
+		document.getElementById("hub").scrollIntoView({ behavior: "auto" });
+		pseudo = n;
+		if (pseudo == ''){
+			document.getElementById("parr").parentNode.removeChild(document.getElementById("parr"));
+			getinf(1,1);
+		}else{
+			getinf(7,-1);
+		}
+			
+	}
+	
+	</script>
+	
+	<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+  
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCC7oYC2SrQK6MAdEeFw2K0G9ctBAcclt0",
+    authDomain: "enreg-online.firebaseapp.com",
+    databaseURL: "https://enreg-online-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "enreg-online",
+    storageBucket: "enreg-online.firebasestorage.app",
+    messagingSenderId: "521482799313",
+    appId: "1:521482799313:web:73e9f48e1334564f849df0",
+    measurementId: "G-X1RVSQYPNR"
+  };
+  
+  
+  // 2. Initialize using the global 'firebase' object (v8 classic syntax)
+  firebase.initializeApp(firebaseConfig);
+  
+  // 3. Define your database globally so your other scripts can see it right away
+  const db = firebase.database();
+	
+	//init
+	
+	//alert("hello");	//pop-up d'info
+	
+	const perso = ["A", "J", "I", "C", "F", "R", "M"];
+	let pseudo = localStorage.getItem("pseudo");
+
+	let lparis;
+	let N; //le nombre de pari en cours 
+    let cnt; //en caisse perso
+	let parr = 1;
+
+	let n;//le pari à valider
+
+	function getinf(){
+
+			
+	    db.ref(`Util/${pseudo}`).on('value', (snapshot) => {
+			let vll = "perso : " + JSON.stringify(snapshot.val()["Mon"]) + " $";
+			cnt = snapshot.val()["Mon"];
+			document.getElementById("curseurV").max = cnt;
+
+			document.getElementById("pseuav").innerHTML = "actuellement ; " + pseudo;
+			
+			document.getElementById("val_caisse_1").innerHTML = vll;
+			document.getElementById("val_caisse_2").innerHTML = vll;
+			document.getElementById("val_caisse_3").innerHTML = vll;
+		});
+		
+	}
+	
+    onload = () => {
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+
+    if (perso.includes(pseudo)) {
+        window.scrollTo({ top: H, behavior: "auto" });
+		getinf();
+    }
+
+	
+		
+  db.ref("Paris").on('value', (snapshot)=>{
+		lparis = snapshot.val();
+        N=lparis.length;
+	
+	let litt = document.getElementById("listt");
+	litt.innerHTML = "";
+	for (let i in lparis){
+		//conteneur ---
+		let divv = document.createElement("div");
+		divv.classList.add("cont"); 
+		//titre
+		let tett1 = document.createElement("p");
+		//tett.textContent = JSON.stringify(lparis[i]);
+		tett1.textContent = lparis[i]["Nom"];
+		tett1.classList.add("tzontxt");
+		divv.appendChild(tett1);
+
+		//parieurs
+        let tett2 = document.createElement("p");
+		let J = "";
+		for (let j in lparis[i]["Act"]){
+		        J += "• " + j + " : " + lparis[i]["Act"][j] + " $\n";
+			}
+		tett2.textContent = J;
+		tett2.classList.add("tzontxt2");
+		
+		divv.appendChild(tett2);
+
+		//actions
+		let divv2 = document.createElement("div");
+		divv2.classList.add("alignee");
+		//bouton rejoindre :
+		let btnR = document.createElement("button");
+		btnR.textContent = "rejoindre";
+		btnR.addEventListener("click",() => rej(i));
+        divv2.appendChild(btnR);
+		//bouton valider :
+		let btnV = document.createElement("button");
+		btnV.textContent = "valider " + i;
+		btnV.addEventListener("click", () => valie(i));
+		divv2.appendChild(btnV);
+		divv.appendChild(divv2);
+		
+		litt.appendChild(divv);
+	}
+
+		});
+		alert("test");
+	}
+
+	function pariee(){
+		window.scrollTo({	top: H*3, behavior: 'auto'});
+		document.getElementById("rejpari").style.display="none";
+		document.getElementById("creepari").style.display="block";
+		document.getElementById("valipari").style.display="none";
+	}
+
+	function rej(id){
+		n = id;
+		window.scrollTo({	top: H*3, behavior: 'auto'});
+		document.getElementById("rejpari").style.display="block";
+		document.getElementById("creepari").style.display="none";
+		document.getElementById("valipari").style.display="none";
+		
+		document.getElementById("curseurV2").min = -cnt;
+		document.getElementById("chotext2").min = -cnt;
+	}
+
+	function valie(id){
+		n=id;
+		window.scrollTo({	top: H*3, behavior: 'auto'});
+		document.getElementById("rejpari").style.display="none";
+		document.getElementById("creepari").style.display="none";
+		document.getElementById("valipari").style.display="block";
+		}
+
+	function clamp(val, min, max){
+		if(val<min){
+			return min;
+		}else if(val>max){
+			return max;
+		}
+		return val;
+	}
+	
+	const curseur = document.getElementById("curseurV");
+	const chotext = document.getElementById("chotext");
+	curseur.addEventListener('input', (event) => {
+        chotext.value = event.target.value; 
+	});
+	chotext.addEventListener('input', (event) => {
+		let ratt = clamp(event.target.value, document.getElementById("curseurV").min, document.getElementById("curseurV").max);
+		chotext.value = ratt;
+        curseur.value = ratt;
+	});
+
+	const curseur2 = document.getElementById("curseurV2");
+const chotext2 = document.getElementById("chotext2");
+curseur2.addEventListener('input', (event) => {
+    chotext2.value = event.target.value;
+});
+chotext2.addEventListener('input', (event) => {
+    let ratt = clamp(event.target.value, curseur2.min, curseur2.max);
+    chotext2.value = ratt;
+    curseur2.value = ratt;
+});
+	
+	function envr(t){
+		if(t==1){
+			let tit = document.getElementById("tit").value;
+			let parrU = document.getElementById("curseurV").value;
+			//let rng = ;
+			if(tit != "" && parrU != ""){
+			    db.ref("Paris").push({
+				        "Nom": tit,
+						"Act": { [pseudo]: parrU }
+				});
+				
+			db.ref(`Util/${pseudo}`).update({
+				Mon: cnt - parrU
+					});
+			            
+			}else{
+				alert("://");
+			}
+		 } else if (t == 2){
+			let chang = 0;
+let parrU = document.getElementById("curseurV2").value;
+
+// 1. Les appels Firebase Realtime Database sont asynchrones. On utilise 'once("value")' puis une promesse (.then).
+db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
+    
+    // 2. On vérifie si le pseudo existe à cet endroit dans la base de données
+    if (snapshot.hasChild(pseudo)) {
+        // 3. Si oui, on récupère sa valeur actuelle
+        chang = snapshot.child(pseudo).val();
+    }
+
+    // 4. On met à jour la valeur dans 'Paris'
+    return db.ref(`Paris/${n}/Act`).update({
+        [pseudo]: parrU
+    });
+}).then(() => {
+    // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
+    return db.ref(`Util/${pseudo}`).update({
+        "Mon": (cnt - (parrU - chang))
+    });
+}).catch((error) => {
+    console.error("Erreur lors de la mise à jour :", error);
+});
+
+		window.scrollTo({	top: H, behavior: 'auto'});
+	}
+	}
+</script>
+</html>
