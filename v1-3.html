@@ -477,12 +477,22 @@ chotext2.addEventListener('input', (event) => {
 				alert("://");
 			}
 		 } else if (t == 2){
+			let chang =0;
         let parrU = document.getElementById("curseurV2").value;
-	    if 
+	    if(db.ref(`Paris/${n}/Act`).once(pseudo) =! none{
+			chang = db.ref(`Paris/${n}/Act`).once(pseudo);
+		}
+
+			
         db.ref(`Paris/${n}/Act`).update({
             [pseudo]: parrU
         });
+			
+		db.ref(`Utilis/${pseudo}`).update({
+            "Mon": (cnt-chang)
+        });
 		}
+		window.scrollTo({	top: H, behavior: 'auto'});
 	}
 </script>
 </html>
