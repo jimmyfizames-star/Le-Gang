@@ -199,7 +199,9 @@
 			<p id = "val_caisse_3" class="demdemi">caisse</p>
 			<p id = "val_parie_3" class="demdemi">parie</p>
 		</div>
+		
         <div id="creepari">
+			
 		<h1>créez votre parie !</h1>
 		<p>titre ;</p>
 		<input type="text" id="tit">
@@ -209,6 +211,7 @@
 		<input type="number" id="chotext" class="cT">
 		<button onclick="envr(1)">=></button>
 		</div>
+		
 		<div id="rejpari">
 			
 		    <p>misez ;</p>
@@ -218,11 +221,13 @@
 
 
 		</div>
+		
 		<div id="valipari">
 			
             <p>le pari :</p>
             <div class="alignee bas">
-				
+					<button onclick="valiact(1)">réussit !</button>
+					<button onclick="valiact(2)">raté</button>
 			</div>
 		</div>
 	<div class="alignee bas">
@@ -230,12 +235,7 @@
 	<button onclick="window.scrollTo({	top: H, behavior: 'auto'});" class="butt">_^_</button>
 		</div>
 		
-
-		
 	</div>
-	
-	
-	
 	
 	</body>
 	<script>
@@ -419,6 +419,8 @@
 		document.getElementById("valipari").style.display="block";
 		}
 
+	
+
 	function clamp(val, min, max){
 		if(val<min){
 			return min;
@@ -493,6 +495,10 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 
 		window.scrollTo({	top: H, behavior: 'auto'});
 	}
+	}
+
+	function valiact(t){
+		;
 	}
 </script>
 </html>
