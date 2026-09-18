@@ -47,6 +47,7 @@
 			overflow-y: auto;
 			height: 60vh;
 			background-color: rgb(220,220,220);
+			overflow-wrap: break-word;
 		}
 
 		.tzontxt{
@@ -119,11 +120,11 @@
 			border-color: rgb(100,100,100);
 		}
 
-		#curseurV{
+		.cV{
 			width: 50vw;
 			height: 5vmin;
 		}
-		#chotext{
+		.cT{
 			height: 5vmin;
 			width: 10vmin;
 		}
@@ -210,15 +211,15 @@
 		<input type="text" id="tit">
 		<br>
 		<p>misez ;</p>
-		<input type="range" min="0" id="curseurV">
-		<input type="number" id="chotext">
+		<input type="range" min="0" id="curseurV class="cV">
+		<input type="number" id="chotext" class="cT">
 		<button onclick="envr(1)">=></button>
 		</div>
 		<div id="rejpari">
 			
 		    <p>misez ;</p>
-		    <input type="range" id="curseurV2">
-		    <input type="number" id="chotext2">
+		    <input type="range" id="curseurV2" class="cV">
+		    <input type="number" id="chotext2" class="cT">
 			<button onclick="envr(2)">=></button>
 
 
@@ -467,13 +468,17 @@ chotext2.addEventListener('input', (event) => {
 				        "Nom": tit,
 						"Act": { [pseudo]: parrU }
 				});
-			
+				
+			db.ref(`Util/${pseudo}/Mon`).update({
+				(cnt-parrU)
+					});
 			            
 			}else{
 				alert("://");
 			}
 		 } else if (t == 2){
         let parrU = document.getElementById("curseurV2").value;
+	    if 
         db.ref(`Paris/${n}/Act`).update({
             [pseudo]: parrU
         });
