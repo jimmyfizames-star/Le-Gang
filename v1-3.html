@@ -258,8 +258,8 @@
 
 	cs.fillStyle = "#a4ffee"	//"rgb(150,170,255)"
 	cs.fillRect(0, 0, canvas.width, canvas.height);
-    let xC= canvas.width*math.random();
-	let yC= canvas.width*math.random();
+    let xC= canvas.width*Math.random();
+	let yC= canvas.width*Math.random();
 	let aC= Math.random()*Math.PI*2
     function loop(){
 		xC=0;
@@ -384,12 +384,12 @@
 		//bouton rejoindre :
 		let btnR = document.createElement("button");
 		btnR.textContent = "rejoindre";
-		btnR.addEventListener("onclick",rej(i));
+		btnR.addEventListener("click",() => rej(i));
         divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
 		btnV.textContent = "valider " + i;
-		btnV.addEventListener("onclick", valie(i))
+		btnV.addEventListener("click", () => valie(i))
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -402,26 +402,28 @@
 
 	function pariee(){
 		window.scrollTo({	top: H*3, behavior: 'auto'});
-		document.getElementById("rejpari").display="none";
-		document.getElementById("creepari").display="block";
-		document.getElementById("valipari").display="none";
+		document.getElementById("rejpari").style.display="none";
+		document.getElementById("creepari").style.display="block";
+		document.getElementById("valipari").style.display="none";
 	}
 
-	function rej(n){
+	function rej(id){
+		n = id;
 		window.scrollTo({	top: H*3, behavior: 'auto'});
-		document.getElementById("rejpari").display="block";
-		document.getElementById("creepari").display="none";
-		document.getElementById("valipari").display="none";
+		document.getElementById("rejpari").style.display="block";
+		document.getElementById("creepari").style.display="none";
+		document.getElementById("valipari").style.display="none";
 		
 		document.getElementById("curseurV").min = -cnt;
 		document.getElementById("chotext").min = -cnt;
 	}
 
-	function valie(n){
+	function valie(id){
+		n=id;
 		window.scrollTo({	top: H*3, behavior: 'auto'});
-		document.getElementById("rejpari").display="none";
-		document.getElementById("creepari").display="none";
-		document.getElementById("valipari").display="block";
+		document.getElementById("rejpari").style.display="none";
+		document.getElementById("creepari").style.display="none";
+		document.getElementById("valipari").style.display="block";
 		}
 
 	function clamp(val, min, max){
@@ -443,6 +445,17 @@
 		chotext.value = ratt;
         curseur.value = ratt;
 	});
+
+	const curseur2 = document.getElementById("curseurV2");
+const chotext2 = document.getElementById("chotext2");
+curseur2.addEventListener('input', (event) => {
+    chotext2.value = event.target.value;
+});
+chotext2.addEventListener('input', (event) => {
+    let ratt = clamp(event.target.value, curseur2.min, curseur2.max);
+    chotext2.value = ratt;
+    curseur2.value = ratt;
+});
 	
 	function envr(t){
 		if(t==1){
@@ -459,12 +472,11 @@
 			}else{
 				alert("://");
 			}
-		}else if(t==2){
-			let parrU = document.getElementById("curseurV").value;
-			db.ref(`Paris/${n}`).push({
-				        "Nom": tit,
-						"Act": { [pseudo]: parrU }
-				});
+		 } else if (t == 2){
+        let parrU = document.getElementById("curseurV2").value;
+        db.ref(`Paris/${n}/Act`).update({
+            [pseudo]: parrU
+        });
 		}
 	}
 </script>
