@@ -355,6 +355,10 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 			   Mon : cnto
 		   });
 	   }
+	   alert("jackpot pour tous !");
+	   db.ref("Util").update({
+            Moa : (new Date()).getMonth()
+        });
    }
 });
 		
