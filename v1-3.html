@@ -318,7 +318,7 @@
 
 	let lparis;
 	let N; //le nombre de pari en cours 
-    let cnt;
+    let cnt; //en caisse perso
 	let parr = 1;
 
 	let n;//le pari à valider
@@ -390,7 +390,7 @@
 		//bouton valider :
 		let btnV = document.createElement("button");
 		btnV.textContent = "valider " + i;
-		btnV.addEventListener("click", () => valie(i))
+		btnV.addEventListener("click", () => valie(i));
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
 		
@@ -477,21 +477,31 @@ chotext2.addEventListener('input', (event) => {
 				alert("://");
 			}
 		 } else if (t == 2){
-			let chang =0;
-        let parrU = document.getElementById("curseurV2").value;
-	    if(db.ref(`Paris/${n}/Act`).once(pseudo) =! none{
-			chang = db.ref(`Paris/${n}/Act`).once(pseudo);
-		}
+			let chang = 0;
+let parrU = document.getElementById("curseurV2").value;
 
-			
-        db.ref(`Paris/${n}/Act`).update({
-            [pseudo]: parrU
-        });
-			
-		db.ref(`Utilis/${pseudo}`).update({
-            "Mon": (cnt-chang)
-        });
-		}
+// 1. Les appels Firebase Realtime Database sont asynchrones. On utilise 'once("value")' puis une promesse (.then).
+db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
+    
+    // 2. On vérifie si le pseudo existe à cet endroit dans la base de données
+    if (snapshot.hasChild(pseudo)) {
+        // 3. Si oui, on récupère sa valeur actuelle
+        chang = snapshot.child(pseudo).val();
+    }
+
+    // 4. On met à jour la valeur dans 'Paris'
+    return db.ref(`Paris/${n}/Act`).update({
+        [pseudo]: parrU
+    });
+}).then(() => {
+    // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
+    return db.ref(`Utilis/${pseudo}`).update({
+        "Mon": (cnt - chang)
+    });
+}).catch((error) => {
+    console.error("Erreur lors de la mise à jour :", error);
+});
+
 		window.scrollTo({	top: H, behavior: 'auto'});
 	}
 </script>
