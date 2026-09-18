@@ -341,12 +341,26 @@
 		getinf();
     }
 
-	
+
+db.ref("Util/Moa").once('value').then((snapshot) => {
+   if(snapshot.val() != (new Date()).getMonth()){
+	   for(let p in perso){
+		   let cnto;
+		   db.ref("Util/Moa").once('value').then((snapshot) => {
+			   cnto = snapshot.val() + 80;
+		   });
+		   
+		   db.ref(`Util/${p}`).update({
+
+			   Mon : cnto
+		   });
+	   }
+   }
+});
 		
   db.ref("Paris").on('value', (snapshot)=>{
 		lparis = snapshot.val();
         N=lparis.length;
-	
 	let litt = document.getElementById("listt");
 	litt.innerHTML = "";
 	for (let i in lparis){
@@ -494,8 +508,9 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
     console.error("Erreur lors de la mise à jour :", error);
 });
 
-		window.scrollTo({	top: H, behavior: 'auto'});
+		
 	}
+		window.scrollTo({	top: H, behavior: 'auto'});
 	}
 </script>
 </html>
