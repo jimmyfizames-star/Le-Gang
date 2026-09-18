@@ -460,9 +460,7 @@ chotext2.addEventListener('input', (event) => {
 						"Act": { [pseudo]: parrU }
 				});
 				
-			db.ref(`Util/${pseudo}`).update({
-				Mon : cnt-parrU
-					});
+			db.ref(`Util/${pseudo}`).update({ Mon : cnt-parrU	});
 			            
 			}else{
 				alert("://");
