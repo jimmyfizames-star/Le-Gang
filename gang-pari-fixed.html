@@ -343,10 +343,11 @@
 
 
 db.ref("Util/Moa").once('value').then((snapshot) => {
-   if(snapshot.val() != (new Date()).getMonth()){
-	   for(let p in perso){
+	const temm = (new Date()).getMonth();
+   if(snapshot.val() != temm){
+	   for(let p of perso){
 		   let cnto;
-		   db.ref("Util/Moa").once('value').then((snapshot) => {
+		   db.ref(`Util/${p}/Mon`).once('value').then((snapshot) => {
 			   cnto = snapshot.val() + 80;
 		   });
 		   
@@ -357,7 +358,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 	   }
 	   alert("jackpot pour tous !");
 	   db.ref("Util").update({
-            Moa : (new Date()).getMonth()
+            Moa : temm
         });
    }
 });
