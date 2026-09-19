@@ -493,6 +493,7 @@ chotext2.addEventListener('input', (event) => {
 			    db.ref("Paris").push({
 				        "Nom": tit,
 						"Act": { [pseudo]: parrU }
+				});
 		    parrU = Math.abs(parrU);
 			db.ref(`Util/${pseudo}`).update({ Mon : cnt-parrU	});
 			            
@@ -542,7 +543,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 					sompos += al[p]*t;
 				}
 			}
-		});
+		
 		
 		
 			
@@ -560,6 +561,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 			
 		db.ref(`Paris/${n}`).remove();
 				});
+		});
 		window.scrollTo({	top: H, behavior: 'auto'});
 	}
 	
