@@ -227,7 +227,7 @@
             <p>le pari :</p>
             <div class="alignee bas">
 					<button onclick="valiact(1)">réussit !</button>
-					<button onclick="valiact(2)">raté</button>
+					<button onclick="valiact(-1)">raté</button>
 			</div>
 		</div>
 	<div class="alignee bas">
@@ -518,30 +518,32 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 
 	function valiact(t){
 		//let lin = `Pari/${t}`;
+			
 		let som = 0;
+		let sompos = 0;
         db.ref(`t${Act}`).once('value').then((snapshot) => {
-			let al = Number(snapshot.val());
+			let al = snapshot.val();
 	        for(let p in al){
 				som += Math.abs(al[p]);
+				if(al[p]*t > 0){
+					sompos += al[p]*t;
+				}
 			}
 		});
 		
-		if(t==1){
+		
 			
 			db.ref(`Paris/${t}/Act`).once('value').then((snapshot) => {
 				let al = snapshot.val();
 	        for(let p in al){
-				if(al[p]>0){
+				if(al[p]*t>0){
 					db.ref(`Util/${pseudo}`).update({
-						Mon : al/al[pseudo]
+						Mon : al[pseudo]*t/sompos*som
 			        });
 				}
 			}
 			});
-				
-		}else if(t==2){
-			;
-		}
+		db.ref(`Paris/${t}`).remove();
 	}
 	
 </script>
