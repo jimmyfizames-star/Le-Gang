@@ -344,7 +344,7 @@
 
 db.ref("Util/Moa").once('value').then((snapshot) => {
    if(snapshot.val() != (new Date()).getMonth()){
-	   for(let p in perso){
+	   for(let p of perso){
 		   let cnto;
 		   db.ref(`Util/${p}`).once('value').then((snap) => {
 			   cnto = Number(snap.val()) + 80;
@@ -488,7 +488,7 @@ chotext2.addEventListener('input', (event) => {
 			}
 		 } else if (t == 2){
 			let chang = 0;
-let parrU = document.getElementById("curseurV2").value;
+let parrU = Number(document.getElementById("curseurV2").value);
 
 // 1. Les appels Firebase Realtime Database sont asynchrones. On utilise 'once("value")' puis une promesse (.then).
 db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
@@ -506,10 +506,10 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 }).then(() => {
     // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
     db.ref(`Util/${pseudo}`).update({
-        "Mon": cnt - Math.abs(parrU-chang)
+        "Mon": cnt - parrU-chang
     });
 }).catch((error) => {
-    alert(error("Erreur lors de la mise à jour :", error));
+    alert("Erreur " + error);
 });
 
 		window.scrollTo({	top: H, behavior: 'auto'});
@@ -521,7 +521,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 			
 		let som = 0;
 		let sompos = 0;
-        db.ref(`t${Act}`).once('value').then((snapshot) => {
+        db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 			let al = snapshot.val();
 	        for(let p in al){
 				som += Math.abs(al[p]);
@@ -533,12 +533,12 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 		
 		
 			
-			db.ref(`Paris/${t}/Act`).once('value').then((snapshot) => {
+			db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 				let al = snapshot.val();
 	        for(let p in al){
 				if(al[p]*t>0){
-					db.ref(`Util/${pseudo}`).update({
-						Mon : al[pseudo]*t/sompos*som
+					db.ref(`Util/${p}`).update({
+						Mon : al[p]*t/sompos*som
 			        });
 				}
 			}
