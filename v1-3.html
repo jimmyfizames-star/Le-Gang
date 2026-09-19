@@ -348,12 +348,13 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 		   let cnto;
 		   db.ref(`Util/${p}`).once('value').then((snap) => {
 			   cnto = Number(snap.val()) + 80;
-		   });
+		   
 		   
 		   db.ref(`Util/${p}`).update({
 
 			   Mon : cnto
 		   });
+			   });
 	   }
 	   alert("jackpot pour tous !");
 	   db.ref("Util").update({
@@ -537,9 +538,11 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 				let al = snapshot.val();
 	        for(let p in al){
 				if(al[p]*t>0){
+					db.ref(`Util/${p}`).once('value').then((snap) => {
 					db.ref(`Util/${p}`).update({
-						Mon : al[p]*t/sompos*som
+						Mon : snap + al[p]*t/sompos*som
 			        });
+					});
 				}
 			}
 			});
