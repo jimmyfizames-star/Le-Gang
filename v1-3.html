@@ -499,14 +499,16 @@ chotext2.addEventListener('input', (event) => {
 			}else{
 				alert("://");
 			}
+			
 		 } else if (t == 2){
+			
 			let chang = 0;
 let parrU = Number(document.getElementById("curseurV2").value);
 			
 db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
     
     if (snapshot.hasChild(pseudo)) {
-        chang = snapshot.child(pseudo).val();
+        chang = Math.abs(Number(snapshot.child(pseudo).val()));
     }
 
     db.ref(`Paris/${n}/Act`).update({
