@@ -550,8 +550,9 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 					});
 				}
 			}
-			});
+			
 		db.ref(`Paris/${n}`).remove();
+				});
 		window.scrollTo({	top: H, behavior: 'auto'});
 	}
 	
