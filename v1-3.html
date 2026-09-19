@@ -347,7 +347,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 	   for(let p of perso){
 		   let cnto
 		   db.ref(`Util/${p}`).once('value').then((snap) => {
-			   cnto = snap.val() + 80;
+			   cnto = Numbersnap.val()) + 80;
 		   });
 		   
 		   db.ref(`Util/${p}`).update({
@@ -473,7 +473,7 @@ chotext2.addEventListener('input', (event) => {
 	function envr(t){
 		if(t==1){
 			let tit = document.getElementById("tit").value;
-			let parrU = document.getElementById("curseurV").value;
+			let parrU = Number(document.getElementById("curseurV").value);
 			//let rng = ;
 			if(tit != "" || parr != ""){
 			    db.ref("Paris").push({
@@ -520,7 +520,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 		//let lin = `Pari/${t}`;
 		let som = 0;
         db.ref(`t${Act}`).once('value').then((snapshot) => {
-			let al = snapshot.val();
+			let al = Number(snapshot.val());
 	        for(let p in al){
 				som += Math.abs(al[p]);
 			}
