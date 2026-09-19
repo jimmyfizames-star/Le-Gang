@@ -347,7 +347,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 	   for(let p of perso){
 		   let cnto
 		   db.ref(`Util/${p}`).once('value').then((snap) => {
-			   cnto = Numbersnap.val()) + 80;
+			   cnto = Number(snap.val()) + 80;
 		   });
 		   
 		   db.ref(`Util/${p}`).update({
