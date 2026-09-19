@@ -345,8 +345,8 @@
 db.ref("Util/Moa").once('value').then((snapshot) => {
    if(snapshot.val() != (new Date()).getMonth()){
 	   for(let p of perso){
-		   db.ref(`Util/${p}`).once('value').then((snapshot) => {
-			   let cnto = snapshot.val() + 80;
+		   db.ref(`Util/${p}`).once('value').then((snap) => {
+			   let cnto = snap.val() + 80;
 		   });
 		   
 		   db.ref(`Util/${p}`).update({
@@ -399,7 +399,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
         divv2.appendChild(btnR);
 		//bouton valider :
 		let btnV = document.createElement("button");
-		btnV.textContent = "valider " + i;
+		btnV.textContent = "valider ";
 		btnV.addEventListener("click", () => valie(i));
 		divv2.appendChild(btnV);
 		divv.appendChild(divv2);
@@ -505,7 +505,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 }).then(() => {
     // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
     return db.ref(`Util/${pseudo}`).update({
-        "Mon": (cnt - chang)
+        "Mon": (cnt - Math.abs(chang))
     });
 }).catch((error) => {
     console.error("Erreur lors de la mise à jour :", error);
@@ -516,7 +516,32 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 	}
 
 	function valiact(t){
-		;
+		//let lin = `Pari/${t}`;
+		let som = 0;
+        db.ref(`t${Act}`).once('value').then((snapshot) => {
+			let al = snapshot.val();
+	        for(let p in al){
+				som += Math.abs(al[p]);
+			}
+		});
+		
+		if(t==1){
+			
+			db.ref(`Paris/${t}/${Act}`).once('value').then((snapshot) => {
+				let al = snapshot.val();
+	        for(let p in al){
+				if(al[p]>0){
+					db.ref(`Util/${pseudo}`).update({
+						
+			        });
+				}
+			}
+			});
+				
+		}else if(t==2){
+			;
+		}
 	}
+	
 </script>
 </html>
