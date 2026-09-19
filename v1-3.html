@@ -341,7 +341,25 @@
 		getinf();
     }
 
-	
+
+db.ref("Util/Moa").once('value').then((snapshot) => {
+   if(snapshot.val() != (new Date()).getMonth()){
+	   for(let p of perso){
+		   db.ref("Util/${p}").once('value').then((snapshot) => {
+			   let cnto = snapshot.val() + 80;
+		   });
+		   
+		   db.ref(`Util/${p}`).update({
+
+			   Mon : cnto
+		   });
+	   }
+	   alert("jackpot pour tous !");
+	   db.ref("Util").update({
+            Moa : (new Date()).getMonth()
+        });
+   }
+});
 		
   db.ref("Paris").on('value', (snapshot)=>{
 		lparis = snapshot.val();
