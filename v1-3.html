@@ -225,6 +225,7 @@
 		<div id="valipari">
 			
             <p>le pari :</p>
+			<p id="raptt"></p>
             <div class="alignee bas">
 					<button onclick="valiact(1)">réussit !</button>
 					<button onclick="valiact(-1)">raté</button>
@@ -434,6 +435,10 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 	function valie(id){
 		n=id;
 		window.scrollTo({	top: H*3, behavior: 'auto'});
+		db.ref(`Paris/${n}/Nom`).once('value').then((snapshot) => {
+			document.getElementById("raptt").innerHTML = snapshot.val();
+
+		});
 		document.getElementById("rejpari").style.display="none";
 		document.getElementById("creepari").style.display="none";
 		document.getElementById("valipari").style.display="block";
@@ -507,7 +512,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 }).then(() => {
     // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
     db.ref(`Util/${pseudo}`).update({
-        "Mon": cnt - parrU-chang
+        "Mon": cnt - (parrU-chang)
     });
 }).catch((error) => {
     alert("Erreur " + error);
