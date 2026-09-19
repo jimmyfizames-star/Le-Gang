@@ -215,7 +215,7 @@
 		<div id="rejpari">
 			
 		    <p>misez ;</p>
-			<p id="raptt2"></p>
+			<p id="raptt1"></p>
 		    <input type="range" id="curseurV2" class="cV">
 		    <input type="number" id="chotext2" class="cT">
 			<button onclick="envr(2)">=></button>
@@ -226,7 +226,7 @@
 		<div id="valipari">
 			
             <p>le pari :</p>
-			<p id="raptt3"></p>
+			<p id="raptt2"></p>
             <div class="alignee bas">
 					<button onclick="valiact(1)">réussit !</button>
 					<button onclick="valiact(-1)">raté</button>
@@ -426,7 +426,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 		n = id;
 		window.scrollTo({	top: H*3, behavior: 'auto'});
 		db.ref(`Paris/${n}/Nom`).once('value').then((snapshot) => {
-			document.getElementById("raptt2").innerHTML = snapshot.val();
+			document.getElementById("raptt1").innerHTML = snapshot.val();
 
 		});
 		document.getElementById("rejpari").style.display="block";
@@ -443,7 +443,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
 		n=id;
 		window.scrollTo({	top: H*3, behavior: 'auto'});
 		db.ref(`Paris/${n}/Nom`).once('value').then((snapshot) => {
-			document.getElementById("raptt3").innerHTML = snapshot.val();
+			document.getElementById("raptt2").innerHTML = snapshot.val();
 
 		});
 		document.getElementById("rejpari").style.display="none";
