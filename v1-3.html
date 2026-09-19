@@ -344,8 +344,8 @@
 
 db.ref("Util/Moa").once('value').then((snapshot) => {
    if(snapshot.val() != (new Date()).getMonth()){
-	   for(let p of perso){
-		   let cnto
+	   for(let p in perso){
+		   let cnto;
 		   db.ref(`Util/${p}`).once('value').then((snap) => {
 			   cnto = Number(snap.val()) + 80;
 		   });
@@ -509,7 +509,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
         "Mon": cnt - Math.abs(parrU-chang)
     });
 }).catch((error) => {
-    console.error("Erreur lors de la mise à jour :", error);
+    alert(error("Erreur lors de la mise à jour :", error));
 });
 
 		window.scrollTo({	top: H, behavior: 'auto'});
@@ -528,12 +528,12 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 		
 		if(t==1){
 			
-			db.ref(`Paris/${t}/${Act}`).once('value').then((snapshot) => {
+			db.ref(`Paris/${t}/Act`).once('value').then((snapshot) => {
 				let al = snapshot.val();
 	        for(let p in al){
 				if(al[p]>0){
 					db.ref(`Util/${pseudo}`).update({
-						
+						Mon : al/al[pseudo]
 			        });
 				}
 			}
