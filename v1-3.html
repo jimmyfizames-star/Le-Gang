@@ -499,13 +499,13 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
     }
 
     // 4. On met à jour la valeur dans 'Paris'
-    return db.ref(`Paris/${n}/Act`).update({
+    db.ref(`Paris/${n}/Act`).update({
         [pseudo]: parrU
     });
 }).then(() => {
     // 5. On effectue la soustraction et la mise à jour dans 'Utilis' après la première opération
-    return db.ref(`Util/${pseudo}`).update({
-        "Mon": (cnt - Math.abs(chang))
+    db.ref(`Util/${pseudo}`).update({
+        "Mon": cnt - Math.abs(parrU-chang)
     });
 }).catch((error) => {
     console.error("Erreur lors de la mise à jour :", error);
