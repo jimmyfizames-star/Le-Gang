@@ -550,7 +550,7 @@ db.ref(`Paris/${n}/Act`).once('value').then((snapshot) => {
 				if(al[p]*t>0){
 					db.ref(`Util/${p}/Mon`).once('value').then((snap) => {
 					db.ref(`Util/${p}`).update({
-						Mon : Number(snap.val()) + al[p]*t/sompos*som
+						Mon : Number(snap.val()) + al[p]*t/sompos*som*1.25
 			        });
 					});
 				}
