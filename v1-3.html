@@ -349,7 +349,7 @@ db.ref("Util/Moa").once('value').then((snapshot) => {
    if(snapshot.val() != (new Date()).getMonth()){
 	   for(let p of perso){
 		   let cnto;
-		   db.ref(`Util/${p}Mon`).once('value').then((snap) => {
+		   db.ref(`Util/${p}/Mon`).once('value').then((snap) => {
 			   cnto = Number(snap.val()) + 80;
 		   
 		   
